@@ -17,7 +17,7 @@ export function FloatingContact({
   // Clean phone number for tel: and whatsapp wa.me: links (remove spaces, symbols)
   const cleanPhone = phone.replace(/[^0-9]/g, "");
   const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
-    "Hello Biomed Institute! I am interested in your biomedical training programs and courses."
+    "Hello Meddrainn Healthcare! I am interested in your biomedical training programs and courses."
   )}`;
   const telUrl = `tel:${phone.replace(/\s+/g, "")}`;
 
@@ -37,12 +37,9 @@ export function FloatingContact({
         {/* 1. Phone Call Button */}
         <a
           href={telUrl}
-          className="group flex items-center gap-2.5"
-          aria-label={`Call Biomed Institute at ${phone}`}
+          className="flex items-center justify-center"
+          aria-label={`Call Meddrainn Healthcare at ${phone}`}
         >
-          <span className="hidden sm:inline-block px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#10243A] text-white shadow-lg border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
-            Call: {phone}
-          </span>
           <div className="w-12 h-12 rounded-full bg-[#155EEF] hover:bg-[#1048b8] text-white shadow-lg shadow-[#155EEF]/35 flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 border-2 border-white/20">
             <Phone className="w-5 h-5 animate-pulse" />
           </div>
@@ -53,12 +50,9 @@ export function FloatingContact({
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center gap-2.5"
-          aria-label="Chat with Biomed Institute on WhatsApp"
+          className="flex items-center justify-center"
+          aria-label="Chat with Meddrainn Healthcare on WhatsApp"
         >
-          <span className="hidden sm:inline-block px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#10243A] text-white shadow-lg border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
-            WhatsApp Support
-          </span>
           <div className="w-12 h-12 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white shadow-lg shadow-[#25D366]/35 flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 border-2 border-white/20">
             {/* Custom SVG WhatsApp Logo */}
             <svg
@@ -76,12 +70,9 @@ export function FloatingContact({
           href={instagramUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center gap-2.5"
-          aria-label="Follow Biomed Institute on Instagram"
+          className="flex items-center justify-center"
+          aria-label="Follow Meddrainn Healthcare on Instagram"
         >
-          <span className="hidden sm:inline-block px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#10243A] text-white shadow-lg border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
-            Instagram Updates
-          </span>
           <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] hover:opacity-95 text-white shadow-lg shadow-[#ee2a7b]/30 flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 border-2 border-white/20">
             {/* Custom SVG Instagram Logo */}
             <svg
