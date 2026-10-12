@@ -108,13 +108,13 @@ export async function decryptAuthPayload(
     throw new Error("Encrypted payload data too short.");
   }
 
-  const iv = combined.subarray(0, 12);
-  const ciphertext = combined.subarray(12);
+  const iv = combined.slice(0, 12);
+  const ciphertext = combined.slice(12);
 
   const decryptedBuffer = await subtle.decrypt(
-    { name: "AES-GCM", iv },
+    { name: "AES-GCM", iv: iv as unknown as BufferSource },
     cryptoKey,
-    ciphertext
+    ciphertext as unknown as BufferSource
   );
 
   const dec = new TextDecoder();
