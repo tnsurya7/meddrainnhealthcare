@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { adminLoginSchema } from "@/lib/validation";
 import { checkRateLimit } from "@/lib/security/rate-limit";
+import { decryptAuthPayload } from "@/lib/security/payload-encryption";
 import {
   verifyPassword,
   signAdminToken,
@@ -35,7 +36,28 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const validationResult = adminLoginSchema.safeParse(body);
+
+    let email = body.email;
+    let password = body.password;
+
+    // Decrypt client-side encrypted credentials to prevent plaintext passwords in DevTools Network tab
+    if (body.encryptedPayload && typeof body.encryptedPayload === "string") {
+      try {
+        const decrypted = await decryptAuthPayload(body.encryptedPayload);
+        if (decrypted) {
+          if (decrypted.password) password = decrypted.password;
+          if (decrypted.email) email = decrypted.email;
+        }
+      } catch (err) {
+        console.error("Payload decryption error:", err);
+        return NextResponse.json(
+          { error: "Invalid encrypted credentials." },
+          { status: 400 }
+        );
+      }
+    }
+
+    const validationResult = adminLoginSchema.safeParse({ email, password });
 
     if (!validationResult.success) {
       return NextResponse.json(

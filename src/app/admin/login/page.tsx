@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { adminLoginSchema, AdminLoginInput } from "@/lib/validation";
+import { encryptAuthPayload } from "@/lib/security/payload-encryption";
 import { FormField } from "@/components/ui/FormField";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
@@ -39,10 +40,21 @@ export default function AdminLoginPage() {
   const onSubmit = async (data: AdminLoginInput) => {
     setErrorMessage(null);
     try {
+      // Encrypt sensitive authentication credentials client-side so that
+      // the plaintext password is never exposed in browser DevTools Network tab payloads.
+      const encryptedPayload = await encryptAuthPayload({
+        email: data.email,
+        password: data.password,
+        timestamp: Date.now(),
+      });
+
       const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          email: data.email,
+          encryptedPayload,
+        }),
       });
 
       const json = await res.json();

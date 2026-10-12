@@ -2,8 +2,31 @@ import { describe, it, expect } from "vitest";
 import { checkRateLimit } from "@/lib/security/rate-limit";
 import { hashPassword, verifyPassword } from "@/lib/auth/passwords";
 import { signAdminToken, verifyAdminToken } from "@/lib/auth/jwt";
+import {
+  encryptAuthPayload,
+  decryptAuthPayload,
+} from "@/lib/security/payload-encryption";
 
-describe("Administrator Authentication & Security (Argon2id + Jose JWT)", () => {
+describe("Administrator Authentication & Security (Argon2id + Jose JWT + Payload Encryption)", () => {
+  it("encrypts sensitive credentials client-side and decrypts correctly on server", async () => {
+    const rawCredentials = {
+      email: "admin@meddrainn",
+      password: "meddrainn@777",
+      timestamp: Date.now(),
+    };
+
+    const encrypted = await encryptAuthPayload(rawCredentials);
+    expect(typeof encrypted).toBe("string");
+    // Plaintext password must NOT appear in the encrypted payload string
+    expect(encrypted.includes("meddrainn@777")).toBe(false);
+    expect(encrypted.length).toBeGreaterThan(30);
+
+    const decrypted = await decryptAuthPayload(encrypted);
+    expect(decrypted).not.toBeNull();
+    expect(decrypted?.email).toBe(rawCredentials.email);
+    expect(decrypted?.password).toBe(rawCredentials.password);
+  });
+
   it("hashes passwords securely with Argon2id and verifies correctly", async () => {
     const rawPassword = "SecureBiomedPassword2026!";
     const hashed = await hashPassword(rawPassword);
@@ -63,3 +86,4 @@ describe("Administrator Authentication & Security (Argon2id + Jose JWT)", () => 
     expect(req4.remaining).toBe(0);
   });
 });
+
