@@ -45,13 +45,34 @@ export function HeroSection({
               <span>Center of Biomedical Excellence</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.15]">
-              {title}
+            <h1 className="tracking-tight leading-tight">
+              {title.includes("MEDDRAINN HEALTHCARE") ? (
+                <>
+                  <span className="block text-base sm:text-lg md:text-xl font-bold text-[#38BDF8] uppercase tracking-wider mb-2">
+                    {title.replace("MEDDRAINN HEALTHCARE", "").trim() || "WELCOME TO"}
+                  </span>
+                  <span className="whitespace-nowrap text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white inline-block">
+                    MEDDRAINN HEALTHCARE
+                  </span>
+                </>
+              ) : (
+                <span className="text-2xl sm:text-4xl lg:text-5xl font-black text-white">
+                  {title}
+                </span>
+              )}
             </h1>
 
-            <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
-              {description}
-            </p>
+            <div className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal space-y-3">
+              {description.split("\n\n").map((para, i) => (
+                <p
+                  key={i}
+                  className="text-justify !text-justify [text-align:justify] [text-justify:inter-word]"
+                  style={{ textAlign: "justify", textJustify: "inter-word" }}
+                >
+                  {para.trim()}
+                </p>
+              ))}
+            </div>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-3.5 pt-4">

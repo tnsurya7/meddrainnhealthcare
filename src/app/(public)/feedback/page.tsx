@@ -52,7 +52,7 @@ export default async function FeedbackPage() {
             Student &amp; Customer Feedback
           </h1>
 
-          <p className="text-base sm:text-lg text-[#64748B] leading-relaxed">
+          <p className="text-base sm:text-lg text-[#64748B] leading-relaxed text-center !text-center mx-auto">
             Read authentic reviews from biomedical engineering students, hospital interns, and healthcare professionals who developed hands-on technical skills at Meddrainn Healthcare.
           </p>
 

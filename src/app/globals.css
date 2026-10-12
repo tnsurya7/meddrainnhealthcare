@@ -32,6 +32,30 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Global paragraph alignment */
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+p.text-justify,
+.text-justify p,
+[class*="text-justify"] p,
+p[class*="text-justify"] {
+  text-align: justify !important;
+  text-justify: inter-word !important;
+}
+
+p.text-center,
+p[class*="text-center"] {
+  text-align: center !important;
+}
+
+p.text-left,
+p[class*="text-left"] {
+  text-align: left !important;
+}
+
 /* Glassmorphism utility */
 .biomed-glass {
   background: rgba(255, 255, 255, 0.85);

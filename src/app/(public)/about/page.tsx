@@ -87,10 +87,18 @@ export default async function AboutPage() {
                 align="left"
                 className="mb-4"
               />
-              <p className="text-base sm:text-lg text-[#172B4D] leading-relaxed font-medium">
-                {settings.aboutContent}
-              </p>
-              <p className="text-sm sm:text-base text-[#64748B] leading-relaxed">
+              <div className="space-y-4 text-base sm:text-lg text-[#172B4D] leading-relaxed font-medium">
+                {settings.aboutContent.split("\n\n").map((para, i) => (
+                  <p
+                    key={i}
+                    className="text-justify !text-justify [text-align:justify] [text-justify:inter-word]"
+                    style={{ textAlign: "justify", textJustify: "inter-word" }}
+                  >
+                    {para.trim()}
+                  </p>
+                ))}
+              </div>
+              <p className="text-sm sm:text-base text-[#64748B] leading-relaxed text-justify [text-align:justify]">
                 Biomedical technology is among the fastest-evolving sectors in modern healthcare.
                 However, traditional engineering coursework frequently leaves graduates unfamiliar
                 with actual clinical hardware, safety analyzers, and hospital breakdown workflows.
@@ -125,9 +133,31 @@ export default async function AboutPage() {
                   <Target className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-[#10243A]">Our Mission</h3>
-                <p className="text-sm text-[#64748B] leading-relaxed">
-                  {settings.mission}
-                </p>
+                {settings.mission.includes("•") || settings.mission.includes("1.") ? (
+                  <ol className="space-y-3">
+                    {settings.mission
+                      .split(/(?:\r?\n|(?=\b[1-9]\.\s+)|(?<=^|[.\n])\s*•\s*)/)
+                      .map((p) => p.replace(/^[•\s\d.]+\s*/, "").trim())
+                      .filter((p) => p.length > 0)
+                      .map((point, index) => (
+                        <li key={index} className="flex items-start gap-2.5">
+                          <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#155EEF]/10 text-[#155EEF] text-xs font-bold shrink-0 mt-0.5">
+                            {index + 1}
+                          </span>
+                          <span
+                            className="text-sm text-[#475569] leading-relaxed text-justify !text-justify [text-align:justify] [text-justify:inter-word] flex-1"
+                            style={{ textAlign: "justify", textJustify: "inter-word" }}
+                          >
+                            {point}
+                          </span>
+                        </li>
+                      ))}
+                  </ol>
+                ) : (
+                  <p className="text-sm text-[#64748B] leading-relaxed text-justify [text-align:justify]">
+                    {settings.mission}
+                  </p>
+                )}
               </div>
 
               {/* Vision Card */}
@@ -136,7 +166,7 @@ export default async function AboutPage() {
                   <Compass className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-[#10243A]">Our Vision</h3>
-                <p className="text-sm text-[#64748B] leading-relaxed">
+                <p className="text-sm text-[#64748B] leading-relaxed text-justify [text-align:justify]">
                   {settings.vision}
                 </p>
               </div>

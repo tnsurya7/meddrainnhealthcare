@@ -25,13 +25,21 @@ export function AboutPreviewSection({ aboutContent }: AboutPreviewProps) {
           <div className="lg:col-span-7 space-y-6">
             <SectionHeading
               badge="About Our Institute"
-              title="Dedicated to Clinical Engineering Competence"
+              title="Dedicated to Bio Medical Engineering Competence"
               align="left"
               className="mb-6"
             />
-            <p className="text-base sm:text-lg text-[#64748B] leading-relaxed">
-              {aboutContent}
-            </p>
+            <div className="space-y-4 text-base sm:text-lg text-[#64748B] leading-relaxed">
+              {aboutContent.split("\n\n").map((para, i) => (
+                <p
+                  key={i}
+                  className="text-justify !text-justify [text-align:justify] [text-justify:inter-word]"
+                  style={{ textAlign: "justify", textJustify: "inter-word" }}
+                >
+                  {para.trim()}
+                </p>
+              ))}
+            </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
               {highlights.map((h, i) => (

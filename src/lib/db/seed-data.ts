@@ -21,7 +21,7 @@ export const initialSiteSettings: NewSiteSettings = {
   aboutContent:
     "Established in 2021, Meddrainn Healthcare is focused on equipping future healthcare professionals with practical expertise and industry-ready skills. We connect academic knowledge with real-world healthcare needs through hands-on training in medical equipment, specialized healthcare sales and marketing programs, and professional hospital support services.\n\nAt Meddrainn Healthcare, we are committed to excellence, innovation, and collaboration, preparing professionals for successful and rewarding careers in the healthcare and biomedical sector.",
   mission:
-    "• To provide high quality hands-on training in medical equipment and biomedical technology.\n• To conduct industry oriented workshops, seminars and webinars.\n• To offer internship programs that build real world technical skills.\n• To support students with placement assistance and career guidance.\n• To bridge the gap between academic learning and healthcare industry requirements.",
+    "1. To provide high quality hands-on training in medical equipment and biomedical technology.\n2. To conduct industry oriented workshops, seminars and webinars.\n3. To offer internship programs that build real world technical skills.\n4. To support students with placement assistance and career guidance.\n5. To bridge the gap between academic learning and healthcare industry requirements.",
   vision:
     "To become a leading institution in medical equipment training and biomedical skill development, empowering students and professionals with practical knowledge, industry exposure and career opportunities in the healthcare technology sector.",
   galleryHeading: "Our Gallery",

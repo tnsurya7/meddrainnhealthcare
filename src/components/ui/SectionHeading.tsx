@@ -37,7 +37,11 @@ export function SectionHeading({
         {title}
       </h2>
       {description && (
-        <p className="mt-4 text-base sm:text-lg text-[#64748B] leading-relaxed">
+        <p
+          className={`mt-4 text-base sm:text-lg text-[#64748B] leading-relaxed ${
+            isCenter ? "text-center !text-center mx-auto" : "text-left !text-left"
+          }`}
+        >
           {description}
         </p>
       )}

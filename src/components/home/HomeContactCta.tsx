@@ -21,7 +21,7 @@ export function HomeContactCta({ phone }: HomeContactCtaProps) {
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-6">
           Ready to Master Practical Biomedical Engineering?
         </h2>
-        <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
+        <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed text-center !text-center">
           Join hands-on calibration and clinical instrumentation batches in Erode. Speak with our faculty coordinator today.
         </p>
 
