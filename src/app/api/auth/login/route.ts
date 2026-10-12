@@ -37,16 +37,16 @@ export async function POST(req: NextRequest) {
 
     const body = await req.json();
 
-    let email = body.email;
-    let password = body.password;
+    let rawEmail = body.email;
+    let rawPassword = body.password;
 
     // Decrypt client-side encrypted credentials to prevent plaintext passwords in DevTools Network tab
     if (body.encryptedPayload && typeof body.encryptedPayload === "string") {
       try {
         const decrypted = await decryptAuthPayload(body.encryptedPayload);
         if (decrypted) {
-          if (decrypted.password) password = decrypted.password;
-          if (decrypted.email) email = decrypted.email;
+          if (decrypted.password) rawPassword = decrypted.password;
+          if (decrypted.email) rawEmail = decrypted.email;
         }
       } catch (err) {
         console.error("Payload decryption error:", err);
@@ -57,7 +57,10 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    const validationResult = adminLoginSchema.safeParse({ email, password });
+    const validationResult = adminLoginSchema.safeParse({
+      email: rawEmail,
+      password: rawPassword,
+    });
 
     if (!validationResult.success) {
       return NextResponse.json(
