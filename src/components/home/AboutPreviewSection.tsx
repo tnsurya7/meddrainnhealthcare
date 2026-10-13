@@ -11,10 +11,26 @@ interface AboutPreviewProps {
 
 export function AboutPreviewSection({ aboutContent }: AboutPreviewProps) {
   const highlights = [
-    "Hospital-grade diagnostic equipment & analyzers",
-    "Direct hands-on disassembly and PCB calibration",
-    "IEC 60601 & IEC 62353 electrical safety training",
-    "Experienced clinical engineering faculty",
+    {
+      title: "Master Industry Tools",
+      description:
+        "Work directly with state-of-the-art, hospital-grade diagnostic equipment and software.",
+    },
+    {
+      title: "Engage in Innovation",
+      description:
+        "Gain real-world experience through collaborative R&D initiatives.",
+    },
+    {
+      title: "Ensure Clinical Safety",
+      description:
+        "Acquire essential training in BC and IEC electrical safety standards.",
+    },
+    {
+      title: "Learn from Experts",
+      description:
+        "Study under highly experienced clinical engineering faculty members.",
+    },
   ];
 
   return (
@@ -24,8 +40,8 @@ export function AboutPreviewSection({ aboutContent }: AboutPreviewProps) {
           {/* Left Text */}
           <div className="lg:col-span-7 space-y-6">
             <SectionHeading
-              badge="About Our Institute"
-              title="Dedicated to Bio Medical Engineering Competence"
+              badge="About Our Institution"
+              title="Dedicated to Biomedical Engineering Competence – Empowering the Next Generation of Biomedical Engineering Professionals"
               align="left"
               className="mb-6"
             />
@@ -41,11 +57,14 @@ export function AboutPreviewSection({ aboutContent }: AboutPreviewProps) {
               ))}
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               {highlights.map((h, i) => (
                 <div key={i} className="flex items-start gap-2.5">
                   <CheckCircle2 className="w-5 h-5 text-[#0D9488] shrink-0 mt-0.5" />
-                  <span className="text-sm font-semibold text-[#172B4D]">{h}</span>
+                  <p className="text-sm leading-relaxed text-[#475569]">
+                    <strong className="font-semibold text-[#172B4D]">{h.title}: </strong>
+                    {h.description}
+                  </p>
                 </div>
               ))}
             </div>
