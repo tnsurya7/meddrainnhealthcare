@@ -41,7 +41,7 @@ export function AboutPreviewSection({ aboutContent }: AboutPreviewProps) {
           <div className="lg:col-span-7 space-y-6">
             <SectionHeading
               badge="About Our Institution"
-              title="Dedicated to Biomedical Engineering Competence – Empowering the Next Generation of Biomedical Engineering Professionals"
+              title="Empowering the Next Generation of Biomedical Engineering Professionals"
               align="left"
               className="mb-6"
             />
