@@ -27,6 +27,7 @@ export function generateEducationalOrganizationSchema(
     alternateName: "Meddrainn Healthcare Biomedical Training",
     url: siteUrl,
     logo: options?.logoUrl || getAbsoluteUrl("/images/logo.png"),
+    image: options?.logoUrl || getAbsoluteUrl("/images/og-image.jpg"),
     description:
       options?.description ||
       "Established in 2021, Meddrainn Healthcare provides hands-on practical training in medical equipment, biomedical technologies, college internships, and hospital support services.",
@@ -47,7 +48,7 @@ export function generateEducationalOrganizationSchema(
 }
 
 /**
- * Generates schema.org WebSite JSON-LD with Sitelinks SearchBox capability
+ * Generates schema.org WebSite JSON-LD with Sitelinks capability
  */
 export function generateWebSiteSchema() {
   const siteUrl = getSiteUrl();
@@ -58,10 +59,12 @@ export function generateWebSiteSchema() {
     "@id": `${siteUrl}/#website`,
     url: siteUrl,
     name: "Meddrainn Healthcare",
+    description:
+      "Established in 2021, Meddrainn Healthcare provides hands-on medical equipment training, biomedical internships, college workshops, and healthcare support services in Erode, Tamil Nadu.",
     publisher: {
       "@id": `${siteUrl}/#organization`,
     },
-    inLanguage: "en-US",
+    inLanguage: "en-IN",
   };
 }
 
@@ -112,6 +115,23 @@ export function generateCourseSchema(course: CourseSchemaOptions) {
       "@type": "EducationalOrganization",
       name: "Meddrainn Healthcare",
       sameAs: siteUrl,
+    },
+    hasCourseInstance: {
+      "@type": "CourseInstance",
+      courseMode: "onsite",
+      ...(course.duration ? { courseWorkload: course.duration } : {}),
+      location: {
+        "@type": "Place",
+        name: "Meddrainn Healthcare Training Center",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "H-42, 80 Feet Road, Periyar Nagar",
+          addressLocality: "Erode",
+          postalCode: "638001",
+          addressRegion: "Tamil Nadu",
+          addressCountry: "IN",
+        },
+      },
     },
   };
 

@@ -11,7 +11,7 @@ import { getAbsoluteUrl } from "@/lib/seo/site-url";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "Our Gallery | Meddrainn Healthcare",
+  title: "Our Gallery",
   description:
     "A glimpse into our practical biomedical training environment. Explore real moments from our hands-on biomedical training sessions, equipment demonstrations and hospital exposure programs at Meddrainn Healthcare.",
   alternates: {

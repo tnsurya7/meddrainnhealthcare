@@ -21,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings();
   const canonicalUrl = getAbsoluteUrl("/contact");
   return {
-    title: `Contact Us & Admission Desk | ${settings.instituteName}`,
+    title: "Contact Us & Admission Desk",
     description: `Connect with ${settings.instituteName} in Erode, Tamil Nadu for hands-on biomedical training, internships, equipment workshops, and campus directions.`,
     alternates: {
       canonical: canonicalUrl,

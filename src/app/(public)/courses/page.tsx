@@ -10,7 +10,7 @@ import { getAbsoluteUrl } from "@/lib/seo/site-url";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "Biomedical Training Courses | Meddrainn Healthcare",
+  title: "Biomedical Training Courses",
   description:
     "Explore practical biomedical engineering training programs in equipment calibration, ICU technology, clinical instrumentation, and hospital internships in Erode.",
   alternates: {

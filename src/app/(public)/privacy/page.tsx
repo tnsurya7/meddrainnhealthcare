@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings();
   const canonicalUrl = getAbsoluteUrl("/privacy");
   return {
-    title: `Privacy Notice | ${settings.instituteName}`,
+    title: "Privacy Notice",
     description: `Privacy notice and student data protection guidelines for ${settings.instituteName} in Erode.`,
     alternates: {
       canonical: canonicalUrl,

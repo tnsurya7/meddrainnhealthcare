@@ -8,7 +8,7 @@ import { Star, MessageSquareQuote, ShieldCheck, Sparkles } from "lucide-react";
 import { getAbsoluteUrl } from "@/lib/seo/site-url";
 
 export const metadata: Metadata = {
-  title: "Student & Customer Feedback | Meddrainn Healthcare",
+  title: "Student & Customer Feedback",
   description:
     "Read genuine reviews and feedback from students and professionals who completed biomedical equipment training, internships, and workshops at Meddrainn Healthcare.",
   alternates: {

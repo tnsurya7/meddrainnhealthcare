@@ -45,7 +45,7 @@ export async function generateMetadata({
   const canonicalUrl = getAbsoluteUrl(`/courses/${course.slug}`);
 
   return {
-    title: `${course.title} | Meddrainn Healthcare`,
+    title: course.title,
     description: course.shortDescription,
     alternates: {
       canonical: canonicalUrl,

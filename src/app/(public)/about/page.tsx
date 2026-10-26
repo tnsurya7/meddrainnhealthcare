@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings();
   const canonicalUrl = getAbsoluteUrl("/about");
   return {
-    title: `About Us | ${settings.instituteName}`,
+    title: "About Us",
     description: `Discover ${settings.instituteName}'s mission, hands-on biomedical training philosophy, and hospital clinical technology programs in Erode, Tamil Nadu.`,
     alternates: {
       canonical: canonicalUrl,

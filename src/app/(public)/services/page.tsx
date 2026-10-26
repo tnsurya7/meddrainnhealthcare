@@ -12,7 +12,7 @@ import { getAbsoluteUrl } from "@/lib/seo/site-url";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "Our Services & Programs | Meddrainn Healthcare",
+  title: "Our Services & Programs",
   description:
     "Explore our professional services including hands-on equipment training, student internships, implant training, college workshops, seminars, webinars, and medical coding in Erode.",
   alternates: {

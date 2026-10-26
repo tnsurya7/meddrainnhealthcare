@@ -25,9 +25,11 @@ export async function generateMetadata(): Promise<Metadata> {
   const canonicalUrl = getAbsoluteUrl("/");
 
   return {
-    title:
-      settings.seoTitle ||
-      "Meddrainn Healthcare | Biomedical Equipment Training & Hospital Services",
+    title: {
+      absolute:
+        settings.seoTitle ||
+        "Meddrainn Healthcare | Biomedical Equipment Training & Hospital Services",
+    },
     description:
       settings.seoDescription ||
       "Established in 2021, Meddrainn Healthcare provides hands-on medical equipment training, biomedical internships, college workshops, and healthcare support services in Erode.",
