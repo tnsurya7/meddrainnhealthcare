@@ -21,29 +21,29 @@ describe("SEO, Custom Domain & AI Discoverability", () => {
 
   describe("Configurable Site URL Helper", () => {
     it("uses NEXT_PUBLIC_SITE_URL when set in production environment", () => {
-      process.env.NEXT_PUBLIC_SITE_URL = "https://meddrainnhealthcare.in";
-      expect(getSiteUrl()).toBe("https://meddrainnhealthcare.in");
+      process.env.NEXT_PUBLIC_SITE_URL = "https://www.meddrainnhealthcare.in";
+      expect(getSiteUrl()).toBe("https://www.meddrainnhealthcare.in");
     });
 
     it("strips trailing slashes from configured URL", () => {
-      process.env.NEXT_PUBLIC_SITE_URL = "https://meddrainnhealthcare.in///";
-      expect(getSiteUrl()).toBe("https://meddrainnhealthcare.in");
+      process.env.NEXT_PUBLIC_SITE_URL = "https://www.meddrainnhealthcare.in///";
+      expect(getSiteUrl()).toBe("https://www.meddrainnhealthcare.in");
     });
 
     it("generates correct absolute URLs without duplicate slashes", () => {
-      process.env.NEXT_PUBLIC_SITE_URL = "https://meddrainnhealthcare.in";
+      process.env.NEXT_PUBLIC_SITE_URL = "https://www.meddrainnhealthcare.in";
       expect(getAbsoluteUrl("/courses/ventilator-training")).toBe(
-        "https://meddrainnhealthcare.in/courses/ventilator-training"
+        "https://www.meddrainnhealthcare.in/courses/ventilator-training"
       );
       expect(getAbsoluteUrl("about")).toBe(
-        "https://meddrainnhealthcare.in/about"
+        "https://www.meddrainnhealthcare.in/about"
       );
     });
   });
 
   describe("Structured Data (JSON-LD)", () => {
     it("generates accurate EducationalOrganization schema matching official Meddrainn details", () => {
-      process.env.NEXT_PUBLIC_SITE_URL = "https://meddrainnhealthcare.in";
+      process.env.NEXT_PUBLIC_SITE_URL = "https://www.meddrainnhealthcare.in";
       const schema = generateEducationalOrganizationSchema();
 
       expect(schema["@context"]).toBe("https://schema.org");
@@ -60,7 +60,7 @@ describe("SEO, Custom Domain & AI Discoverability", () => {
     });
 
     it("generates valid Course schema without fabricated reviews or ratings", () => {
-      process.env.NEXT_PUBLIC_SITE_URL = "https://meddrainnhealthcare.in";
+      process.env.NEXT_PUBLIC_SITE_URL = "https://www.meddrainnhealthcare.in";
       const courseSchema = generateCourseSchema({
         title: "Medical Equipment Calibration",
         description: "Hands-on calibration of physiological patient monitors.",
@@ -71,7 +71,7 @@ describe("SEO, Custom Domain & AI Discoverability", () => {
       expect(courseSchema["@type"]).toBe("Course");
       expect(courseSchema.name).toBe("Medical Equipment Calibration");
       expect(courseSchema.url).toBe(
-        "https://meddrainnhealthcare.in/courses/medical-equipment-calibration"
+        "https://www.meddrainnhealthcare.in/courses/medical-equipment-calibration"
       );
       expect(courseSchema.provider.name).toBe("Meddrainn Healthcare");
       expect(courseSchema.timeRequired).toBe("4 Weeks");
@@ -79,7 +79,7 @@ describe("SEO, Custom Domain & AI Discoverability", () => {
     });
 
     it("generates valid BreadcrumbList schema with sequential positions", () => {
-      process.env.NEXT_PUBLIC_SITE_URL = "https://meddrainnhealthcare.in";
+      process.env.NEXT_PUBLIC_SITE_URL = "https://www.meddrainnhealthcare.in";
       const breadcrumbs = generateBreadcrumbSchema([
         { name: "Home", url: "/" },
         { name: "Courses", url: "/courses" },
@@ -90,7 +90,7 @@ describe("SEO, Custom Domain & AI Discoverability", () => {
       expect(breadcrumbs.itemListElement).toHaveLength(3);
       expect(breadcrumbs.itemListElement[0].position).toBe(1);
       expect(breadcrumbs.itemListElement[0].item).toBe(
-        "https://meddrainnhealthcare.in/"
+        "https://www.meddrainnhealthcare.in/"
       );
       expect(breadcrumbs.itemListElement[2].position).toBe(3);
     });
@@ -98,7 +98,7 @@ describe("SEO, Custom Domain & AI Discoverability", () => {
 
   describe("Robots Directives & AI Search Discovery", () => {
     it("includes OAI-SearchBot and Googlebot with public access while blocking admin", () => {
-      process.env.NEXT_PUBLIC_SITE_URL = "https://meddrainnhealthcare.in";
+      process.env.NEXT_PUBLIC_SITE_URL = "https://www.meddrainnhealthcare.in";
       const robotsConfig = robots();
 
       const rules = Array.isArray(robotsConfig.rules)
@@ -115,7 +115,7 @@ describe("SEO, Custom Domain & AI Discoverability", () => {
       expect(googleRule?.allow).toBe("/");
 
       expect(robotsConfig.sitemap).toBe(
-        "https://meddrainnhealthcare.in/sitemap.xml"
+        "https://www.meddrainnhealthcare.in/sitemap.xml"
       );
     });
   });

@@ -14,7 +14,7 @@ export function getSiteUrl(): string {
   }
 
   if (process.env.NODE_ENV === "production") {
-    return "https://meddrainnhealthcare.in";
+    return "https://www.meddrainnhealthcare.in";
   }
 
   // 2. Default fallback for local development
