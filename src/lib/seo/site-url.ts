@@ -13,6 +13,10 @@ export function getSiteUrl(): string {
     return configuredUrl.trim().replace(/\/+$/, "");
   }
 
+  if (process.env.NODE_ENV === "production") {
+    return "https://meddrainnhealthcare.in";
+  }
+
   // 2. Default fallback for local development
   return "http://localhost:3000";
 }

@@ -87,11 +87,11 @@ export default async function AboutPage() {
                 align="left"
                 className="mb-4"
               />
-              <div className="space-y-4 text-base sm:text-lg text-[#172B4D] leading-relaxed font-medium">
+              <div className="space-y-4 text-base sm:text-lg text-[#64748B] leading-relaxed font-normal">
                 {settings.aboutContent.split("\n\n").map((para, i) => (
                   <p
                     key={i}
-                    className="text-justify !text-justify [text-align:justify] [text-justify:inter-word]"
+                    className="text-justify !text-justify [text-align:justify] [text-justify:inter-word] font-normal"
                     style={{ textAlign: "justify", textJustify: "inter-word" }}
                   >
                     {para.trim()}

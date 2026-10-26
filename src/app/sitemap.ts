@@ -2,6 +2,8 @@ import { MetadataRoute } from "next";
 import { getPublishedCourses } from "@/lib/db/queries/courses";
 import { getSiteUrl } from "@/lib/seo/site-url";
 
+export const revalidate = 3600;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = getSiteUrl();
   const courses = await getPublishedCourses();
