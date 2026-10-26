@@ -87,7 +87,7 @@ export default async function AboutPage() {
                 align="left"
                 className="mb-4"
               />
-              <div className="space-y-4 text-base sm:text-lg text-[#64748B] leading-relaxed font-normal">
+              <div className="space-y-4 text-sm sm:text-base text-[#64748B] leading-relaxed font-normal">
                 {settings.aboutContent.split("\n\n").map((para, i) => (
                   <p
                     key={i}
