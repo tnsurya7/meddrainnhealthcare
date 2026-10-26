@@ -24,7 +24,15 @@ export function generateEducationalOrganizationSchema(
     "@type": "EducationalOrganization",
     "@id": `${siteUrl}/#organization`,
     name: options?.name || "Meddrainn Healthcare",
-    alternateName: "Meddrainn Healthcare Biomedical Training",
+    alternateName: [
+      "Meddrainn",
+      "meddrainn",
+      "meddrainnhealthcare",
+      "Healthcare Meddrainn",
+      "Meddrainn Healthcare Erode",
+      "Meddrainn Erode",
+      "Meddrainn Healthcare Biomedical Training",
+    ],
     url: siteUrl,
     logo: options?.logoUrl || getAbsoluteUrl("/images/logo.png"),
     image: options?.logoUrl || getAbsoluteUrl("/images/og-image.jpg"),
@@ -59,6 +67,14 @@ export function generateWebSiteSchema() {
     "@id": `${siteUrl}/#website`,
     url: siteUrl,
     name: "Meddrainn Healthcare",
+    alternateName: [
+      "Meddrainn",
+      "meddrainn",
+      "meddrainnhealthcare",
+      "Healthcare Meddrainn",
+      "Meddrainn Healthcare Erode",
+      "Meddrainn Erode",
+    ],
     description:
       "Established in 2021, Meddrainn Healthcare provides hands-on medical equipment training, biomedical internships, college workshops, and healthcare support services in Erode, Tamil Nadu.",
     publisher: {

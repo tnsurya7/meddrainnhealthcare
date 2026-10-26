@@ -26,6 +26,11 @@ export const metadata: Metadata = {
     "Established in 2021, Meddrainn Healthcare provides hands-on medical equipment training, biomedical internships, college workshops, and healthcare support services in Erode, Tamil Nadu.",
   keywords: [
     "Meddrainn Healthcare",
+    "Meddrainn",
+    "meddrainn",
+    "meddrainnhealthcare",
+    "healthcare meddrainn",
+    "meddrainn erode",
     "Meddrainn Healthcare Erode",
     "Biomedical training institute in Erode",
     "Biomedical equipment training in Erode",
